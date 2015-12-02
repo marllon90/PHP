@@ -1,2 +1,3 @@
 # PHP
-PHP Functions 
+
+This is a repository for some functions in PHP. 
