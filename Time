@@ -1,0 +1,58 @@
+class Time {
+	/**
+	 *
+	 * @param string $birthday
+	 *        	Accept only dd/mm/YYYY format
+	 */
+	function calculateAge($birthday = null) {
+		$birthday = explode ( '/', $birthday );
+		$birthday = $birthday [2] . '-' . $birthday [1] . '-' . $birthday [0];
+		$dataNascimento = $birthday;
+		$date = new DateTime ( $dataNascimento );
+		$interval = $date->diff ( new DateTime ( date ( 'Y-m-d' ) ) );
+		$age = $interval->format ( '%Y' );
+		return ( int ) $age;
+	}
+	/**
+	 *
+	 * @param string $birthday        	
+	 * @param string $min        	
+	 * @param string $max        	
+	 */
+	function minMaxAge($birthday = null, $min = null, $max = null) {
+		$age = $this->calculateAge ( $birthday );
+		if ($age > ( int ) $min && $age < ( int ) $max) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	/**
+	 *
+	 * @param string $birthday        	
+	 * @param string $min        	
+	 * @return boolean
+	 */
+	function minAge($birthday = null, $min = null) {
+		$age = $this->calculateAge ( $birthday );
+		if ($age > ( int ) $min) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	/**
+	 *
+	 * @param string $birthday        	
+	 * @param string $max        	
+	 * @return boolean
+	 */
+	function maxAge($birthday = null, $max = null) {
+		$age = $this->calculateAge ( $birthday );
+		if ($age < ( int ) $max) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+}
